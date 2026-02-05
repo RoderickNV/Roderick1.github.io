@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rob Roderick — Pilot & Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky-blue: #0A7AFF;
+            --deep-navy: #0D1B2A;
+            --cloud-white: #F8F9FA;
+            --horizon-orange: #FF6B35;
+            --earth-brown: #3D3522;
+            --fog-gray: #E0E5E8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            background: var(--cloud-white);
+            color: var(--deep-navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 249, 250, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid rgba(13, 27, 42, 0.1);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-navy);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--deep-navy);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sky-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--sky-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 5% 5%;
+            background: linear-gradient(135deg, #0D1B2A 0%, #1B3A52 50%, #2A5470 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(10, 122, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content .subtitle {
+            color: var(--sky-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--fog-gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s;
+            display: inline-block;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary {
+            background: var(--sky-blue);
+            color: white;
+            box-shadow: 0 4px 20px rgba(10, 122, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #0865D9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(10, 122, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--deep-navy);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, rgba(10, 122, 255, 0.2) 0%, rgba(255, 107, 53, 0.2) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Work Section */
+        .work-section {
+            padding: 8rem 5%;
+            background: white;
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-header .label {
+            color: var(--sky-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #5A6C7D;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .work-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: var(--cloud-white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            border: 1px solid #E0E5E8;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .work-card:nth-child(1) { animation-delay: 0.1s; }
+        .work-card:nth-child(2) { animation-delay: 0.2s; }
+        .work-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .work-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(13, 27, 42, 0.15);
+        }
+
+        .work-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+        }
+
+        .work-card p {
+            color: #5A6C7D;
+            margin-bottom: 1.5rem;
+        }
+
+        .work-link {
+            color: var(--sky-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .work-link:hover {
+            gap: 1rem;
+        }
+
+        /* Adventures Section */
+        .adventures-section {
+            padding: 8rem 5%;
+            background: var(--fog-gray);
+        }
+
+        .blog-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(13, 27, 42, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .blog-card:nth-child(1) { animation-delay: 0.1s; }
+        .blog-card:nth-child(2) { animation-delay: 0.2s; }
+        .blog-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(13, 27, 42, 0.15);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--horizon-orange) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-date {
+            color: var(--sky-blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            color: var(--deep-navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card p {
+            color: #5A6C7D;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .read-more {
+            color: var(--deep-navy);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            color: var(--sky-blue);
+            gap: 1rem;
+        }
+
+        /* Contact/Footer Section */
+        .contact-section {
+            padding: 8rem 5%;
+            background: var(--deep-navy);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            color: var(--fog-gray);
+            margin-bottom: 2.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: var(--deep-navy);
+            border-color: white;
+            transform: translateY(-4px);
+        }
+
+        footer {
+            background: #0A1219;
+            padding: 2rem 5%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .work-grid, .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation on scroll */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">Rob Roderick</div>
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#adventures">Adventures</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="subtitle">Professional & Pilot</div>
+                <h1>Rob Roderick</h1>
+                <p>Professional by day, aviator by passion. Exploring the intersection of career excellence and adventure in the skies.</p>
+                <div class="cta-buttons">
+                    <a href="#work" class="btn btn-primary">View My Work</a>
+                    <a href="#adventures" class="btn btn-secondary">Flight Adventures</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder">Your hero image here<br>(cockpit view or professional photo)</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="work-section">
+        <div class="section-header">
+            <div class="label">Professional Experience</div>
+            <h2>My Work</h2>
+            <p>A showcase of projects, accomplishments, and professional expertise that define my career journey.</p>
+        </div>
+        <div class="work-grid">
+            <div class="work-card">
+                <h3>Project Title One</h3>
+                <p>Brief description of this project, your role, and the impact it made. Highlight key achievements and technologies used.</p>
+                <a href="#" class="work-link">Learn More →</a>
+            </div>
+            <div class="work-card">
+                <h3>Project Title Two</h3>
+                <p>Brief description of this project, your role, and the impact it made. Highlight key achievements and technologies used.</p>
+                <a href="#" class="work-link">Learn More →</a>
+            </div>
+            <div class="work-card">
+                <h3>Project Title Three</h3>
+                <p>Brief description of this project, your role, and the impact it made. Highlight key achievements and technologies used.</p>
+                <a href="#" class="work-link">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="adventures" class="adventures-section">
+        <div class="section-header">
+            <div class="label">Aviation & Adventure</div>
+            <h2>Flight Log</h2>
+            <p>Stories from the cockpit, adventures above the clouds, and the journey of becoming a pilot.</p>
+        </div>
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-image">Adventure Photo Here</div>
+                <div class="blog-content">
+                    <div class="blog-date">Jan 15, 2026</div>
+                    <h3>First Solo Cross-Country</h3>
+                    <p>The story of my first solo cross-country flight, navigating weather challenges and the incredible feeling of independence in the air.</p>
+                    <a href="#" class="read-more">Read Story →</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-image">Adventure Photo Here</div>
+                <div class="blog-content">
+                    <div class="blog-date">Dec 22, 2025</div>
+                    <h3>Sunset Flight Over the Coast</h3>
+                    <p>An unforgettable evening flight along the coastline, capturing the perfect golden hour from 3,000 feet above sea level.</p>
+                    <a href="#" class="read-more">Read Story →</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-image">Adventure Photo Here</div>
+                <div class="blog-content">
+                    <div class="blog-date">Nov 30, 2025</div>
+                    <h3>Earning My Private Pilot License</h3>
+                    <p>The culmination of months of training, studying, and dedication. Reflections on the journey to earning my wings.</p>
+                    <a href="#" class="read-more">Read Story →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-content">
+            <h2>Let's Connect</h2>
+            <p>Whether you're interested in working together or want to talk aviation, I'd love to hear from you.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/robroderick" class="social-link" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:rob@robroderick.com" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Rob Roderick. Built with purpose and passion.</p>
+    </footer>
+</body>
+</html>
